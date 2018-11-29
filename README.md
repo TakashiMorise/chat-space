@@ -25,6 +25,7 @@ Things you may want to cover:
 ### Association
 - has_many :messages
 - has_many :groups, through: members
+- has_many :members
 
 ## groupsテーブル
 
@@ -35,6 +36,7 @@ Things you may want to cover:
 ### Association
 - has_many :messages
 - has_many :users, through: members
+- has_many :members
 
 ## membersテーブル
 
@@ -59,6 +61,8 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :group
+
+----------------
 
 * Database initialization
 

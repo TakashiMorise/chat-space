@@ -17,7 +17,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, need index|
+|name|string|null: false, index: true|
 |email|string|null: false, unique: true|
 
 ### Association
@@ -29,7 +29,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|group-name|string|null: false, unique: true, need index|
+|name|string|null: false, unique: true|
 
 ### Association
 - has_many :messages
@@ -40,8 +40,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true, need index|
-|group_id|integer|null: false, foreign_key: true, need index|
+|user_id|integer|null: false, foreign_key: true, index: true|
+|group_id|integer|null: false, foreign_key: true, index: true|
 
 ### Association
 - belongs_to :user
@@ -51,8 +51,8 @@ Things you may want to cover:
 
 |Column|Type|Option|
 |------|----|------|
-|body|text|null: false, need index|
-|image|string|need index|
+|body|text| - |
+|image|string| - |
 |user_id|integer|null: false, foreign_key|
 |group_id|integer|null: false, foreign_key|
 

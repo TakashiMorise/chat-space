@@ -11,11 +11,9 @@ Things you may want to cover:
 
 * Configuration
 
-* Database creation
+# Database creation
 
-# DB設計
-
-## usersテーブル
+## users table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -27,7 +25,7 @@ Things you may want to cover:
 - has_many :groups, through: members
 - has_many :members
 
-## groupsテーブル
+## groups table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -38,7 +36,7 @@ Things you may want to cover:
 - has_many :users, through: members
 - has_many :members
 
-## membersテーブル
+## members table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -49,7 +47,7 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :group
 
-## messagesテーブル
+## messages table
 
 |Column|Type|Option|
 |------|----|------|

@@ -1,2 +1,7 @@
-@import "font-awesome"
+//ここへは全て@importで持ってくる
 @import "./reset";
+@import "./variable";
+@import "./chat-left";
+@import "./chat-main";
+@import "./action-message";
+@import "./etc";

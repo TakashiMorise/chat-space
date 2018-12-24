@@ -1,0 +1,48 @@
+%body
+  /wrapperで全体を包み込む
+  .wrapper
+    /画面一番上のアクション後のメッセージ表示画面
+    %header.action-message
+      メッセージ送信成功
+    /画面左側の表示
+    %section.chat-left
+      .chat-left__user-info
+        .chat-left__user-info__container
+          .chat-left__user-info__container__name
+            /ログインユーザー名
+            Yang Wen-li
+          /pathは決まり次第変更のこと
+          = link_to messages_path, class: "chat-left__user-info__container__edit-account" do
+            /font-awesome使用
+            = fa_icon 'cog'
+          /pathは決まり次第変更のこと
+          = link_to messages_path, class: "chat-left__user-info__container__create-group" do
+            /font-awesome使用
+            = fa_icon 'edit'
+      .chat-left__group-info
+        /チャットの表示部分は部分テンプレート化
+        = render partial: "group-info"
+    /右側のメインチャット画面
+    %section.chat-main
+      .chat-main__header
+        .chat-main__header__group-info.clearfix
+          .chat-main__header__group-info__name
+            /現在入っているチャットグループ
+            sampleグループ
+          /pathは決まり次第変更のこと
+          = link_to messages_path, class:"chat-main__header__group-info__btn" do
+            Edit
+        .chat-main__header__menber-info
+          MEMBER: Tac
+      .chat-main__bulletin-board
+        .chat-main__bulletin-board__messages
+          /チャット部分は部分テンプレート化
+          = render partial: "chat-main-msg"
+      /以下テキストや画像の投稿部分
+      .chat-main__footer
+        %form.chat-main__footer__form
+          %input.chat-main__footer__form__textbox{:name => "text", :placeholder => "type a message", :type => "text"}/
+          %label.chat-main__footer__form__label
+            = fa_icon 'image', class: "fa-position"
+            %input#filesend{:name => "datafile", :type => "file"}/
+          %input.chat-main__footer__form__submit{:type => "submit", :value => "Send"}/

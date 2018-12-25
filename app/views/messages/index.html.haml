@@ -1,22 +1,19 @@
 %body
   /wrapperで全体を包み込む
   .wrapper
-    /画面一番上のアクション後のメッセージ表示画面
-    %header.action-message
-      メッセージ送信成功
     /画面左側の表示
     %section.chat-left
       .chat-left__user-info
         .chat-left__user-info__container
           .chat-left__user-info__container__name
             /ログインユーザー名
-            Yang Wen-li
+            = current_user.name
           /pathは決まり次第変更のこと
-          = link_to messages_path, class: "chat-left__user-info__container__edit-account" do
+          = link_to edit_user_path(current_user), class: "chat-left__user-info__container__edit-account" do
             /font-awesome使用
             = fa_icon 'cog'
           /pathは決まり次第変更のこと
-          = link_to messages_path, class: "chat-left__user-info__container__create-group" do
+          = link_to edit_user_path(current_user), class: "chat-left__user-info__container__create-group" do
             /font-awesome使用
             = fa_icon 'edit'
       .chat-left__group-info

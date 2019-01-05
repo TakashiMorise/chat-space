@@ -13,7 +13,7 @@
             /font-awesome使用
             = fa_icon 'cog'
           /pathは決まり次第変更のこと
-          = link_to edit_user_path(current_user), class: "chat-left__user-info__container__create-group" do
+          = link_to new_group_path, class: "chat-left__user-info__container__create-group" do
             /font-awesome使用
             = fa_icon 'edit'
       .chat-left__group-info
@@ -27,7 +27,7 @@
             /現在入っているチャットグループ
             sampleグループ
           /pathは決まり次第変更のこと
-          = link_to messages_path, class:"chat-main__header__group-info__btn" do
+          = link_to root_path, class:"chat-main__header__group-info__btn" do
             Edit
         .chat-main__header__menber-info
           MEMBER: Tac

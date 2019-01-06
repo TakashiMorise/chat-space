@@ -1,0 +1,15 @@
+      .chat-main__footer
+        %form.chat-main__footer__form
+          %input.chat-main__footer__form__textbox{:name => "text", :placeholder => "type a message", :type => "text"}/
+          %label.chat-main__footer__form__label
+            = fa_icon 'image', class: "fa-position"
+            %input#filesend{:name => "datafile", :type => "file"}/
+          %input.chat-main__footer__form__submit{:type => "submit", :value => "Send"}/
+
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'chat-main__footer__form__textbox', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'chat-main__footer__form__label' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'chat-main__footer__form__submit'

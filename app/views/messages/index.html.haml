@@ -1,0 +1,32 @@
+%body
+  /wrapperで全体を包み込む
+  .wrapper
+    /画面左側の表示
+    %section.chat-left
+      /左側のチャット部分は部分テンプレート化
+      = render partial: "messages/group-info"
+    /右側のメインチャット画面
+    %section.chat-main
+      .chat-main__header
+        .chat-main__header__group-info.clearfix
+          .chat-main__header__group-info__name
+            /現在入っているチャットグループ
+            sampleグループ
+          /pathは決まり次第変更のこと
+          = link_to root_path, class:"chat-main__header__group-info__btn" do
+            Edit
+        .chat-main__header__menber-info
+          MEMBER: Tac
+      .chat-main__bulletin-board
+        .chat-main__bulletin-board__messages
+          /チャット部分は部分テンプレート化
+          = render partial: "messages/chat-main-msg", collection: @messages
+        /以下テキストや画像の投稿部分
+      .chat-main__footer
+        = form_for([@group, @message],html: { class: 'chat-main__footer__form'}) do |f|
+          = f.text_field :content, class: 'chat-main__footer__form__textbox', placeholder: 'type a message'
+          = f.label :image, class: 'chat-main__footer__form__label' do
+            = fa_icon 'image', class: 'fa-position'
+            = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'chat-main__footer__form__submit'
+

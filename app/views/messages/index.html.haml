@@ -11,19 +11,21 @@
         .chat-main__header__group-info.clearfix
           .chat-main__header__group-info__name
             /現在入っているチャットグループ
-            sampleグループ
+            = @group.name
           /pathは決まり次第変更のこと
-          = link_to root_path, class:"chat-main__header__group-info__btn" do
+          = link_to edit_group_path(@group), class:"chat-main__header__group-info__btn" do
             Edit
         .chat-main__header__menber-info
-          MEMBER: Tac
+          Member:
+          - @group.users.each do |member|
+            = member.name
       .chat-main__bulletin-board
         .chat-main__bulletin-board__messages
           /チャット部分は部分テンプレート化
-          = render partial: "messages/chat-main-msg", collection: @messages
+          = render partial: 'message', collection: @messages
         /以下テキストや画像の投稿部分
       .chat-main__footer
-        = form_for([@group, @message],html: { class: 'chat-main__footer__form'}) do |f|
+        = form_for [@group, @message] do |f|
           = f.text_field :content, class: 'chat-main__footer__form__textbox', placeholder: 'type a message'
           = f.label :image, class: 'chat-main__footer__form__label' do
             = fa_icon 'image', class: 'fa-position'

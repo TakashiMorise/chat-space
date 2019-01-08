@@ -1,0 +1,12 @@
+/メイン画面のチャット部分
+.chat-main__bulletin-board__messages__message
+  .chat-main__bulletin-board__messages__message-name
+    = message.user.name
+  .chat-main__bulletin-board__messages__message-date
+    = message.created_at.strftime("%Y/%m/%d %H:%M")
+  .chat-main__bulletin-board__messages__message-text
+    - if message.content.present?
+      %p.lower-message__content
+        = message.content
+    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+

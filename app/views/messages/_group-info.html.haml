@@ -20,7 +20,7 @@
           .chat-left__group-info__container__name
             = group.name
           .chat-left__group-info__container__text
-            メッセージはまだありません
+            = group.show_last_message
 /ここまでが１メッセージ分　以降は適当にコピペ
 / .chat-left__group-info__container
 /   %a{:href => "#"}

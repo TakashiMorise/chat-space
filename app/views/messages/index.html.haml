@@ -4,31 +4,28 @@
     /画面左側の表示
     %section.chat-left
       /左側のチャット部分は部分テンプレート化
-      = render partial: "messages/group-info"
+      = render partial: "messages/chat-left"
     /右側のメインチャット画面
     %section.chat-main
       .chat-main__header
         .chat-main__header__group-info.clearfix
           .chat-main__header__group-info__name
-            /現在入っているチャットグループ
+            現在入っているチャットグループ
             = @group.name
-          /pathは決まり次第変更のこと
-          = link_to edit_group_path(@group), class:"chat-main__header__group-info__btn" do
-            Edit
+          = link_to 'Edit', root_path, class:"chat-main__header__group-info__btn"
         .chat-main__header__menber-info
           Member:
-          - @group.users.each do |member|
-            = member.name
+          / - @group.users.each do |member|
+          /   = member.name
       .chat-main__bulletin-board
         .chat-main__bulletin-board__messages
           /チャット部分は部分テンプレート化
-          = render partial: 'message', collection: @messages
-        /以下テキストや画像の投稿部分
+          = render partial: 'messages/message', locals: { message: @messages }
+        /以下テキストや画像の投稿部分 collection: @messages
       .chat-main__footer
-        = form_for [@group, @message] do |f|
-          = f.text_field :content, class: 'chat-main__footer__form__textbox', placeholder: 'type a message'
-          = f.label :image, class: 'chat-main__footer__form__label' do
-            = fa_icon 'image', class: 'fa-position'
-            = f.file_field :image, class: 'hidden'
-          = f.submit 'Send', class: 'chat-main__footer__form__submit'
-
+        %form.chat-main__footer__form
+          %input.chat-main__footer__form__textbox{:name => "text", :placeholder => "type a message", :type => "text"}/
+          %label.chat-main__footer__form__label
+            = fa_icon 'image', class: "fa-position"
+            %input.hidden{:name => "datafile", :type => "file"}/
+          %input.chat-main__footer__form__submit{:type => "submit", :value => "Send"}/
